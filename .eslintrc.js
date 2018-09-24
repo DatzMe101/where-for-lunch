@@ -418,7 +418,7 @@ module.exports = {
   ],
   "linebreak-style": [
    "error",
-   "unix"
+   "windows"
   ],
   "lines-around-comment": "off",
   "lines-around-directive": [

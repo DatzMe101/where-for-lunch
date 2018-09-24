@@ -10,11 +10,16 @@ import Condition from 'components/Condition/Condition';
 
 class HomePage extends Component {
   handleOnClick = () => {
+    console.log(this.props.condition);
     this.props.fetchPlaces(this.props.condition);
   }
 
   handleOnConditionChange = (value) => {
     this.props.setRadius(value);
+  }
+  disabledButton() {
+    const { condition } = this.props;
+    return !condition || !condition.latitude || !condition.longitude;
   }
   render() {
     const { condition, place } = this.props;
@@ -23,7 +28,7 @@ class HomePage extends Component {
         <Place place={place} />
         <div className="searchWrapper">
           <Condition condition={condition} action={this.handleOnConditionChange}/>
-          <Button onClick={this.handleOnClick} theme="homepageClick" />
+          <Button disabled={this.disabledButton()} onClick={this.handleOnClick} theme="homepageClick" />
         </div>
       </div>
     );
